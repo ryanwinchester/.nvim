@@ -608,7 +608,7 @@ require('lazy').setup {
       }
 
       require('lspconfig').lexical.setup {
-        cmd = { '~/Code/forks/lexical/_build/dev/package/lexical/bin/start_lexical.sh' },
+        cmd = { vim.fs.normalize '~/Code/forks/lexical/_build/dev/package/lexical/bin/start_lexical.sh' },
         capabilities = capabilities,
       }
     end,
