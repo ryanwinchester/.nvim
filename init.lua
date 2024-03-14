@@ -184,6 +184,13 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Indenting and outdent that is not stupid.
+vim.keymap.set('n', '<Tab>', '>>', { desc = 'Indent' })
+vim.keymap.set('n', '<S-Tab>', '<<', { desc = 'Outdent' })
+vim.keymap.set('v', '<Tab>', '>gv', { desc = 'Indent' })
+vim.keymap.set('v', '<S-Tab>', '<gv', { desc = 'Outdent' })
+vim.keymap.set('i', '<S-Tab>', '<C-d>', { desc = 'Outdent' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -221,6 +228,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'mg979/vim-visual-multi',
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -541,7 +549,7 @@ require('lazy').setup {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        tsserver = {},
         --
 
         lua_ls = {
@@ -805,6 +813,43 @@ require('lazy').setup {
       --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    end,
+  },
+
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local harpoon = require 'harpoon'
+
+      vim.keymap.set('n', '<leader>a', function()
+        harpoon:list():append()
+      end, { desc = 'Add file to Harpoon' })
+
+      vim.keymap.set('n', '<leader>H', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end, { desc = 'Open Harpoon Window' })
+
+      vim.keymap.set('n', '<leader>1', function()
+        harpoon:list():select(1)
+      end, { desc = 'Open Harpoon File 1' })
+
+      vim.keymap.set('n', '<leader>2', function()
+        harpoon:list():select(2)
+      end, { desc = 'Open Harpoon File 2' })
+
+      vim.keymap.set('n', '<leader>3', function()
+        harpoon:list():select(3)
+      end, { desc = 'Open Harpoon File 3' })
+
+      vim.keymap.set('n', '<leader>4', function()
+        harpoon:list():select(4)
+      end, { desc = 'Open Harpoon File 4' })
+
+      vim.keymap.set('n', '<leader>5', function()
+        harpoon:list():select(5)
+      end, { desc = 'Open Harpoon File 5' })
     end,
   },
 
