@@ -616,6 +616,7 @@ require('lazy').setup {
       }
 
       require('lspconfig').lexical.setup {
+        filetypes = { 'elixir', 'eelixir', 'heex' },
         cmd = { vim.fs.normalize '~/Code/forks/lexical/_build/dev/package/lexical/bin/start_lexical.sh' },
         capabilities = capabilities,
       }
@@ -861,6 +862,18 @@ require('lazy').setup {
       vim.keymap.set('n', '<leader>5', function()
         harpoon:list():select(5)
       end, { desc = 'Open Harpoon File 5' })
+    end,
+  },
+
+  {
+    'laytan/cloak.nvim',
+    config = function()
+      local cloak = require 'cloak'
+      cloak.setup {
+        enabled = true,
+        cloak_character = '*',
+        cloak_telescope = true,
+      }
     end,
   },
 
