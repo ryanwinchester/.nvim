@@ -3,9 +3,36 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        tailwindcss = {},
+        tailwindcss = {
+          filetypes_include = { "heex" },
+          init_options = {
+            userLanguages = {
+              elixir = "html-eex",
+              eelixir = "html-eex",
+              heex = "html-eex",
+            },
+          },
+        },
+        -- NOTE: lexical is not recognizing imported function components from AppWeb.
+        -- we'll leave it out until that is fixed...
+        -- lexical = {
+        --   mason = false,
+        --   filetypes = { "elixir", "eelixir", "heex" },
+        --   cmd = { vim.fn.expand("~/Code/forks/lexical/_build/dev/package/lexical/bin/start_lexical.sh") },
+        --   settings = {},
+        -- },
       },
     },
+  },
+
+  -- Extend mason config???
+  {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "elixir-ls",
+      })
+    end,
   },
 
   -- Tailwind colorizing autocomplete

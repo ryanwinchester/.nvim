@@ -1,16 +1,17 @@
 return {
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = true,
-  --   opts = { style = "moon" },
-  -- },
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    opts = { style = "moon" },
+  },
+
   {
     "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",
     opts = {
       -- HOW DO I DISABLE ITALICS?!
-      -- no_italic = true,
+      no_italic = true,
       -- no_bold = false,
       integrations = {
         aerial = true,
@@ -47,6 +48,14 @@ return {
         treesitter_context = true,
         which_key = true,
       },
+    },
+  },
+
+  -- Configure LazyVim to load the colorscheme...
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
     },
   },
 }
