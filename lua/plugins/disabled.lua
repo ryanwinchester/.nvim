@@ -13,4 +13,7 @@ return {
 
   -- Removes the stupid search thing...
   { "folke/flash.nvim", enabled = false },
+
+  -- Remove the tabs
+  -- { "akinsho/bufferline.nvim", enabled = false },
 }
