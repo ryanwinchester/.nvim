@@ -10,6 +10,7 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
+      flavour = "macchiato",
       -- HOW DO I DISABLE ITALICS?!
       no_italic = true,
       -- no_bold = false,
