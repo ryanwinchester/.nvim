@@ -14,8 +14,6 @@ return {
         glow = true,
         theme = "fluoromachine",
       })
-
-      vim.cmd.colorscheme("fluoromachine")
     end,
   },
   {
