@@ -13,6 +13,15 @@ return {
       -- HOW DO I DISABLE ITALICS?!
       no_italic = true,
       -- no_bold = false,
+      custom_highlights = function(colors)
+        return {
+          -- TreesitterContext = { bg = colors.mantle },
+          -- TreesitterContextLineNumber = { bg = colors.mantle },
+          -- TreesitterContextBottom = { style = { "underline" } },
+          MultiCursor = { bg = colors.red },
+          VM_Cursor = { bg = colors.red },
+        }
+      end,
       integrations = {
         aerial = true,
         alpha = true,
